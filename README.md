@@ -76,9 +76,7 @@ This repository is currently being prepared as the formal reproducibility packag
 
 The first complete and verified release is planned as:
 
-```text
-v1.0.0
-```
+The first complete and verified release is planned as **`v1.0.0`**.
 
 That release will be archived on Zenodo and assigned a persistent DOI.
 
@@ -114,7 +112,7 @@ Hysteresis is used to reduce unstable switching between authority states. Recove
 
 ## Principal simulation findings
 
-The manuscript reports a paired comparison based on:
+The manuscript reports a paired comparison based on **100,000 simulated mission states**.
 
 ```text
 100,000 simulated mission states
@@ -299,11 +297,7 @@ The workflow will:
 11. export machine-readable result tables; and
 12. regenerate the computational figures.
 
-A reduced working example will be supplied in:
-
-```text
-notebooks/minimal_working_example.ipynb
-```
+A reduced working example will be supplied in `notebooks/minimal_working_example.ipynb`.
 
 The notebook will use a smaller simulation size so that reviewers can inspect the model logic without running the complete 100,000-state analysis.
 
@@ -359,6 +353,7 @@ results/mission_specific_results.csv
 results/authority_state_distribution.csv
 results/threshold_sensitivity.csv
 results/domain_ablation.csv
+
 ```
 
 Because the states are synthetic, the repository will not contain personally identifiable information or restricted operational records.
@@ -426,7 +421,7 @@ The verified release is expected to use:
 - PyYAML; and
 - pytest.
 
-The final version constraints will be recorded in:
+The final version constraints will be recorded in `requirements.txt` and `environment.yml`.
 
 ```text
 requirements.txt
@@ -611,17 +606,11 @@ Please do not disclose confidential, security-sensitive or operational aviation 
 
 ## Release and archival plan
 
-The first complete software release will be tagged:
-
-```text
-v1.0.0
-```
+The first complete software release will be tagged **`v1.0.0`**.
 
 Planned release title:
 
-```text
-ASSURE-BVLOS Reproducibility Package v1.0.0
-```
+> **ASSURE-BVLOS Reproducibility Package v1.0.0**
 
 The verified release will be archived through Zenodo.
 
