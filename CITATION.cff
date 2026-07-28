@@ -1,11 +1,16 @@
 cff-version: 1.2.0
-message: "If you use this software or reproducibility package, please cite it using the metadata below."
-title: "ASSURE-BVLOS: Simulation and reproducibility package for runtime assurance in risk-adaptive space–air–ground unmanned aircraft operations"
+message: "If you use this software or supporting-materials package, please cite it using the metadata below."
+type: software
+title: "ASSURE-BVLOS: Simulation and Reproducibility Package for an Assurance-Aware Space–Air–Ground Intelligence Framework"
+version: 1.0.0
+date-released: 2026-07-28
+doi: 10.5281/zenodo.21642250
 authors:
   - family-names: "Barua"
     given-names: "Nick"
     orcid: "https://orcid.org/0000-0003-4641-0112"
 repository-code: "https://github.com/Nick-Barua/ASSURE-BVLOS"
+url: "https://doi.org/10.5281/zenodo.21642250"
 license: "BSD-3-Clause"
 keywords:
   - "BVLOS"
@@ -14,3 +19,4 @@ keywords:
   - "adaptive autonomy"
   - "aviation safety"
   - "digital safety case"
+
