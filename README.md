@@ -54,7 +54,14 @@ The completed repository will contain the software, configuration files, paramet
 
 ## Repository status
 
-This repository is being prepared as the formal reproducibility package for the associated manuscript.
+Version 1.0.0 is archived on Zenodo:
+
+**DOI:** https://doi.org/10.5281/zenodo.21642250
+
+This version contains the repository documentation, citation metadata,
+graphical abstract, and six publication figures. Executable simulation
+code, state-level outputs, and figure-generation files are planned for
+a later version.
 
 ### Available now
 
