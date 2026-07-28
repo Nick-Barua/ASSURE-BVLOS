@@ -1,22 +1,24 @@
 # ASSURE-BVLOS
 
-**Runtime Assurance for Risk-Adaptive Space–Air–Ground Unmanned Aircraft Operations**
+## Runtime Assurance for Risk-Adaptive Space–Air–Ground Unmanned Aircraft Operations
 
 [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-blue.svg)](LICENSE)
-[![Repository status](https://img.shields.io/badge/status-reproducibility%20package%20in%20preparation-orange.svg)](#repository-status)
-[![Research software](https://img.shields.io/badge/type-research%20software-0b5fa5.svg)](#scientific-scope-and-limitations)
+![Repository status](https://img.shields.io/badge/status-reproducibility%20package%20in%20preparation-orange.svg)
+![Research software](https://img.shields.io/badge/type-research%20software-0B5FA5.svg)
 
-> A simulation-based runtime-assurance framework for integrating heterogeneous space–air–ground information, quantifying multidomain operational risk, adapting unmanned-aircraft authority in real time, and generating traceable safety evidence for beyond-visual-line-of-sight operations.
+> A simulation-based runtime-assurance framework for integrating heterogeneous space–air–ground information, quantifying multidomain operational risk, adapting unmanned-aircraft authority, and generating traceable safety evidence for beyond-visual-line-of-sight operations.
 
 ---
 
 ## Graphical abstract
 
-![ASSURE-BVLOS graphical abstract](ASSURE_BVLOS_Graphical_Abstract.png)
+<p align="center">
+  <img src="ASSURE_BVLOS_Graphical_Abstract.png" alt="ASSURE-BVLOS graphical abstract" width="100%">
+</p>
 
-The graphical abstract summarises the four principal components of the framework:
+The graphical abstract summarises four principal elements of the framework:
 
-1. heterogeneous operational inputs from terrestrial, airborne and satellite-supported services;
+1. heterogeneous terrestrial, airborne and satellite-supported operational inputs;
 2. uncertainty-aware multidomain risk fusion;
 3. adaptive runtime authority with hysteresis and hard-limit overrides; and
 4. traceable safety evidence and simulation-based outcome evaluation.
@@ -27,54 +29,52 @@ The graphical abstract summarises the four principal components of the framework
 
 **ASSURE-BVLOS** is an assurance-oriented computational framework for beyond-visual-line-of-sight (**BVLOS**) unmanned aircraft operations.
 
-The framework is designed to evaluate operational conditions continuously across multiple safety-relevant domains and to adapt the level of system authority when risk increases. It combines heterogeneous information from communication, navigation, sensing, environmental, vehicle-health and external geospatial sources.
+The framework evaluates operational conditions continuously across multiple safety-relevant domains and adapts system authority when the assessed risk increases. It combines heterogeneous information from communication, navigation, sensing, environmental, vehicle-health and external geospatial sources.
 
 The framework includes:
 
 - communication, command-and-control and navigation monitoring;
-- sensing and perception confidence assessment;
+- sensing and perception-confidence assessment;
 - environmental and mission-context evaluation;
 - vehicle-health monitoring;
 - data-age, integrity and provenance assessment;
 - uncertainty-aware multidomain risk aggregation;
 - hysteretic authority-state transitions;
 - predefined hard-limit safety overrides;
-- paired baseline and adaptive-policy comparison; and
+- paired baseline and adaptive-policy comparisons; and
 - a machine-readable digital safety-case concept.
 
 This repository accompanies the manuscript:
 
 > **ASSURE-BVLOS: Runtime Assurance for Risk-Adaptive Space–Air–Ground Unmanned Aircraft Operations**
 
-The repository will contain the software, configuration files, parameter definitions, synthetic mission states, computational outputs and figure-generation materials required to reproduce the simulation results reported in the manuscript.
+The completed repository will contain the software, configuration files, parameter definitions, synthetic mission states, computational outputs and figure-generation materials required to reproduce the simulation results reported in the manuscript.
 
 ---
 
 ## Repository status
 
-This repository is currently being prepared as the formal reproducibility package for the associated manuscript.
+This repository is being prepared as the formal reproducibility package for the associated manuscript.
 
 ### Available now
 
 - graphical abstract;
-- publication-quality manuscript figures;
+- six manuscript figures;
 - BSD 3-Clause licence; and
 - repository documentation.
 
-### To be added before the first archived release
+### To be added before release `v1.0.0`
 
 - executable simulation code;
 - verified parameter manifest;
 - Python dependency files;
-- synthetic state-level input data;
+- synthetic state-level inputs;
 - processed policy outputs;
 - robustness and ablation results;
 - figure-generation scripts;
-- minimal reproducibility notebook;
+- a minimal reproducibility notebook;
 - machine-readable citation metadata; and
 - Zenodo archival metadata.
-
-The first complete and verified release is planned as:
 
 The first complete and verified release is planned as **`v1.0.0`**.
 
@@ -88,11 +88,11 @@ ASSURE-BVLOS evaluates five operational-risk domains.
 
 | Domain | Representative variables |
 |---|---|
-| Communication, command and navigation | latency, jitter, packet loss, command-link integrity and positioning availability |
-| Sensing and perception | confidence, disagreement, degraded visibility and observation reliability |
-| Environment and mission context | weather, terrain, airspace complexity and mission exposure |
-| Vehicle health | subsystem status, fault indicators and operating margins |
-| Data integrity and freshness | provenance, age, integrity, synchronisation and availability |
+| Communication, command and navigation | Latency, jitter, packet loss, command-link integrity and positioning availability |
+| Sensing and perception | Confidence, disagreement, degraded visibility and observation reliability |
+| Environment and mission context | Weather, terrain, airspace complexity and mission exposure |
+| Vehicle health | Subsystem status, fault indicators and operating margins |
+| Data integrity and freshness | Provenance, age, integrity, synchronisation and availability |
 
 The domain-level indicators are combined into a normalised, uncertainty-adjusted risk score.
 
@@ -104,9 +104,11 @@ Runtime authority is then assigned using five ordered states.
 | `S1` | Constrained | Reduced operational freedom or increased safeguards |
 | `S2` | Protected autonomy | Safety-prioritised autonomous behaviour |
 | `S3` | Contingency | Contingency procedure, recovery or minimum-risk routing |
-| `S4` | Terminate | Immediate termination or predefined minimum-risk action |
+| `S4` | Terminate | Immediate termination or a predefined minimum-risk action |
 
-Hysteresis is used to reduce unstable switching between authority states. Recovery therefore requires stronger evidence than escalation. Hard-limit overrides can bypass the aggregate risk score when predefined critical conditions are detected.
+Hysteresis is used to reduce unstable switching between authority states. Recovery therefore requires stronger evidence than escalation.
+
+Hard-limit overrides can bypass the aggregate risk score when predefined critical conditions are detected.
 
 ---
 
@@ -114,20 +116,16 @@ Hysteresis is used to reduce unstable switching between authority states. Recove
 
 The manuscript reports a paired comparison based on **100,000 simulated mission states**.
 
-```text
-100,000 simulated mission states
-```
+### Overall comparison
 
-The principal modelled hazardous-outcome rates were:
-
-| Policy | Modelled hazardous-outcome rate |
+| Policy or measure | Modelled result |
 |---|---:|
 | Baseline policy | 12.758% |
 | ASSURE-BVLOS policy | 9.619% |
 | Absolute difference | 3.139 percentage points |
 | Relative difference | 24.6% |
 
-Scenario-specific modelled rates were:
+### Mission-specific comparison
 
 | Mission scenario | Baseline | ASSURE-BVLOS |
 |---|---:|---:|
@@ -135,7 +133,9 @@ Scenario-specific modelled rates were:
 | Infrastructure inspection | 10.91% | 8.45% |
 | Maritime surveillance | 12.80% | 9.55% |
 
-These values are outputs of the synthetic simulation and engineering outcome surrogate described in the manuscript. They are not empirical accident-rate estimates.
+These values are outputs of the synthetic simulation and engineering hazardous-outcome surrogate described in the manuscript.
+
+They are not empirical accident-rate estimates and should not be interpreted as demonstrated real-world safety improvements.
 
 ---
 
@@ -143,7 +143,9 @@ These values are outputs of the synthetic simulation and engineering outcome sur
 
 ### Figure 1. ASSURE-BVLOS reference architecture
 
-![Figure 1. ASSURE-BVLOS reference architecture](Figure_1_ASSURE_BVLOS_reference_architecture.png)
+<p align="center">
+  <img src="Figure_1_ASSURE_BVLOS_reference_architecture.png" alt="Figure 1. ASSURE-BVLOS reference architecture" width="100%">
+</p>
 
 The reference architecture connects heterogeneous space–air–ground information sources with risk assessment, runtime authority adaptation and evidence generation.
 
@@ -151,7 +153,9 @@ The reference architecture connects heterogeneous space–air–ground informati
 
 ### Figure 2. Authority bands and hysteretic recovery logic
 
-![Figure 2. Authority bands and hysteretic recovery logic](Figure_2_authority_bands_hysteretic_recovery_logic.png)
+<p align="center">
+  <img src="Figure_2_authority_bands_hysteretic_recovery_logic.png" alt="Figure 2. Authority bands and hysteretic recovery logic" width="100%">
+</p>
 
 The policy escalates authority restrictions as adjusted risk increases. Hysteretic recovery thresholds reduce rapid state oscillation.
 
@@ -159,7 +163,9 @@ The policy escalates authority restrictions as adjusted risk increases. Hysteret
 
 ### Figure 3. Digital safety-case structure
 
-![Figure 3. Digital safety-case structure](Figure_3_digital_safety_case_structure.png)
+<p align="center">
+  <img src="Figure_3_digital_safety_case_structure.png" alt="Figure 3. Digital safety-case structure" width="100%">
+</p>
 
 The digital safety-case concept links claims, evidence, analysis, runtime transitions and assurance conclusions through a machine-readable evidence repository.
 
@@ -167,7 +173,9 @@ The digital safety-case concept links claims, evidence, analysis, runtime transi
 
 ### Figure 4. Distributions of normalised risk contributions
 
-![Figure 4. Distributions of normalised risk contributions](Figure_4_distributions_of_normalised_risk_contributions.png)
+<p align="center">
+  <img src="Figure_4_distributions_of_normalised_risk_contributions.png" alt="Figure 4. Distributions of normalised risk contributions" width="100%">
+</p>
 
 The distributions summarise the simulated contribution of each monitored domain to the multidomain risk model.
 
@@ -175,7 +183,9 @@ The distributions summarise the simulated contribution of each monitored domain 
 
 ### Figure 5. Hazardous-outcome rates under the baseline and ASSURE-BVLOS policies
 
-![Figure 5. Hazardous-outcome rates under the baseline and ASSURE-BVLOS policies](Figure_5_hazardous_outcome_rates_baseline_vs_assure_bvlos.png)
+<p align="center">
+  <img src="Figure_5_hazardous_outcome_rates_baseline_vs_assure_bvlos.png" alt="Figure 5. Hazardous-outcome rates under the baseline and ASSURE-BVLOS policies" width="100%">
+</p>
 
 The paired simulation comparison produced modelled hazardous-outcome rates of 12.758% under the baseline policy and 9.619% under ASSURE-BVLOS.
 
@@ -183,7 +193,9 @@ The paired simulation comparison produced modelled hazardous-outcome rates of 12
 
 ### Figure 6. Scenario-specific hazardous-outcome rates
 
-![Figure 6. Scenario-specific hazardous-outcome rates](Figure_6_scenario_specific_hazardous_outcome_rates.png)
+<p align="center">
+  <img src="Figure_6_scenario_specific_hazardous_outcome_rates.png" alt="Figure 6. Scenario-specific hazardous-outcome rates" width="100%">
+</p>
 
 The scenario analysis compares the baseline and adaptive policies across disaster-response, infrastructure-inspection and maritime-surveillance missions.
 
@@ -191,7 +203,7 @@ The scenario analysis compares the baseline and adaptive policies across disaste
 
 ## Planned repository structure
 
-The completed release will use the following structure:
+The completed reproducibility package will use the following structure:
 
 ```text
 ASSURE-BVLOS/
@@ -202,6 +214,14 @@ ASSURE-BVLOS/
 ├── .gitignore
 ├── requirements.txt
 ├── environment.yml
+│
+├── ASSURE_BVLOS_Graphical_Abstract.png
+├── Figure_1_ASSURE_BVLOS_reference_architecture.png
+├── Figure_2_authority_bands_hysteretic_recovery_logic.png
+├── Figure_3_digital_safety_case_structure.png
+├── Figure_4_distributions_of_normalised_risk_contributions.png
+├── Figure_5_hazardous_outcome_rates_baseline_vs_assure_bvlos.png
+├── Figure_6_scenario_specific_hazardous_outcome_rates.png
 │
 ├── src/
 │   ├── __init__.py
@@ -230,15 +250,6 @@ ASSURE-BVLOS/
 │   ├── multi_seed_summary.csv
 │   └── coefficient_sensitivity.csv
 │
-├── figures/
-│   ├── ASSURE_BVLOS_Graphical_Abstract.png
-│   ├── Figure_1_ASSURE_BVLOS_reference_architecture.png
-│   ├── Figure_2_authority_bands_hysteretic_recovery_logic.png
-│   ├── Figure_3_digital_safety_case_structure.png
-│   ├── Figure_4_distributions_of_normalised_risk_contributions.png
-│   ├── Figure_5_hazardous_outcome_rates_baseline_vs_assure_bvlos.png
-│   └── Figure_6_scenario_specific_hazardous_outcome_rates.png
-│
 ├── notebooks/
 │   └── minimal_working_example.ipynb
 │
@@ -252,20 +263,16 @@ ASSURE-BVLOS/
     └── README.md
 ```
 
-The figures are temporarily stored at the repository root. They may later be moved into the `figures/` directory when the complete repository structure is created.
-
 ---
 
 ## Planned source-code modules
 
-The executable package will be divided into focused modules.
-
 | File | Purpose |
 |---|---|
-| `config.py` | Global configuration, random seed, sample size, thresholds, probabilities and coefficients |
+| `config.py` | Random seed, sample size, mission probabilities, thresholds, coefficients and model settings |
 | `distributions.py` | Synthetic generation of communication, sensing, environmental, vehicle and data-integrity variables |
 | `risk_model.py` | Domain-risk calculation, uncertainty adjustment and aggregate-risk computation |
-| `authority_policy.py` | Authority-state assignment, escalation, hysteresis, recovery and hard overrides |
+| `authority_policy.py` | Authority-state assignment, escalation, recovery, hysteresis and hard overrides |
 | `outcome_surrogate.py` | Engineering hazardous-outcome surrogate and policy-dependent mitigation |
 | `simulation.py` | Paired mission-state simulation and policy comparison |
 | `robustness.py` | Threshold sensitivity, domain ablation, multiple-seed and coefficient analyses |
@@ -274,7 +281,7 @@ The executable package will be divided into focused modules.
 
 ---
 
-## Reproducibility workflow
+## Planned reproducibility workflow
 
 After the complete executable package is released, the primary analysis will be run using:
 
@@ -318,7 +325,7 @@ Release `v1.0.0` will be designed to reproduce:
 - multidomain risk-contribution distributions; and
 - the manuscript’s computational figures.
 
-The release will also document:
+The release will document:
 
 - random-number generation;
 - the primary random seed;
@@ -343,7 +350,9 @@ No personal, confidential, proprietary flight-test or operational accident data 
 
 The current analysis is based on synthetically generated mission states.
 
-The archived release will provide sufficient synthetic inputs and outputs to verify the reported computational results. Planned principal files include:
+The archived release will provide sufficient synthetic inputs and outputs to verify the reported computational results.
+
+Planned principal files include:
 
 ```text
 data/raw/mission_states_seed_20260717.csv
@@ -353,7 +362,6 @@ results/mission_specific_results.csv
 results/authority_state_distribution.csv
 results/threshold_sensitivity.csv
 results/domain_ablation.csv
-
 ```
 
 Because the states are synthetic, the repository will not contain personally identifiable information or restricted operational records.
@@ -362,7 +370,7 @@ Because the states are synthetic, the repository will not contain personally ide
 
 ## Installation
 
-The final verified software environment will be installable using either `pip` or Conda.
+The installation instructions below will become active after the executable software and dependency files are added.
 
 ### Clone the repository
 
@@ -381,7 +389,7 @@ python -m venv .venv
 
 Activate it on Windows:
 
-```bash
+```powershell
 .venv\Scripts\activate
 ```
 
@@ -423,21 +431,16 @@ The verified release is expected to use:
 
 The final version constraints will be recorded in `requirements.txt` and `environment.yml`.
 
-```text
-requirements.txt
-environment.yml
-```
-
 ---
 
 ## Validation checks planned for release
 
 Before release `v1.0.0`, the repository will be checked for:
 
-- deterministic reproduction under the primary seed;
+- deterministic reproduction under the primary random seed;
 - preservation of paired baseline and adaptive-policy evaluation;
 - agreement between exported tables and manuscript values;
-- agreement between regenerated figures and publication figures;
+- agreement between regenerated and publication figures;
 - correct threshold ordering;
 - correct hysteretic escalation and recovery behaviour;
 - correct hard-limit override behaviour;
@@ -461,13 +464,9 @@ unmanned aircraft operations. GitHub.
 https://github.com/Nick-Barua/ASSURE-BVLOS
 ```
 
-The formal citation will be provided in:
+A machine-readable citation file, `CITATION.cff`, will be added before release `v1.0.0`.
 
-```text
-CITATION.cff
-```
-
-After release `v1.0.0` is archived on Zenodo, this section will be updated with the version-specific DOI and the concept DOI.
+After the release is archived on Zenodo, this section will be updated with the version-specific DOI and the repository concept DOI.
 
 ---
 
@@ -523,7 +522,7 @@ The framework requires staged verification and validation through:
 
 ## Responsible use
 
-The repository is provided for research, methodological evaluation and reproducibility.
+This repository is provided for research, methodological evaluation and reproducibility.
 
 It must not be used as the sole basis for:
 
@@ -543,9 +542,9 @@ Users are responsible for independently verifying all assumptions, equations, th
 
 The associated work may be available as a preprint before journal publication.
 
-A preprint has not undergone journal peer review and should not be treated as a final peer-reviewed record.
+A preprint has not undergone journal peer review and should not be treated as the final peer-reviewed record.
 
-The repository will be updated after formal publication to include:
+After formal publication, the repository will be updated to include:
 
 - the final article title;
 - complete bibliographic details;
@@ -557,7 +556,7 @@ The repository will be updated after formal publication to include:
 
 ---
 
-## Contributing
+## Contributing and issue reporting
 
 The repository is currently maintained as an author-controlled reproducibility package.
 
@@ -574,7 +573,7 @@ When reporting a problem, include:
 - complete error message; and
 - the smallest reproducible example.
 
-Substantial code changes should be proposed through a separate branch or pull request and should include tests and documentation.
+Please do not disclose confidential, security-sensitive or operational aviation information in a public issue.
 
 ---
 
@@ -584,23 +583,7 @@ Substantial code changes should be proposed through a separate branch or pull re
 
 GitHub: [@Nick-Barua](https://github.com/Nick-Barua)
 
-Repository:
-
-```text
-https://github.com/Nick-Barua/ASSURE-BVLOS
-```
-
----
-
-## Contact and issue reporting
-
-Questions, implementation problems and reproducibility reports may be submitted through the repository’s **Issues** page:
-
-```text
-https://github.com/Nick-Barua/ASSURE-BVLOS/issues
-```
-
-Please do not disclose confidential, security-sensitive or operational aviation information in a public issue.
+Repository: [Nick-Barua/ASSURE-BVLOS](https://github.com/Nick-Barua/ASSURE-BVLOS)
 
 ---
 
@@ -617,14 +600,14 @@ The verified release will be archived through Zenodo.
 The Zenodo record will contain:
 
 - complete title;
-- author and affiliation metadata;
+- author metadata;
 - release description;
 - BSD 3-Clause licence;
 - related manuscript information;
 - keywords;
 - GitHub release archive;
 - version-specific DOI; and
-- concept DOI for all repository versions.
+- concept DOI covering all repository versions.
 
 ---
 
@@ -635,11 +618,3 @@ This software and its accompanying materials are supplied without warranty.
 The author does not warrant that the framework is suitable for operational aviation use, certification, regulatory approval or safety-critical deployment.
 
 Use of the software is entirely at the user’s own risk and remains subject to all applicable aviation, unmanned-aircraft, communications, privacy, export-control and safety regulations.
-
----
-
-## Acknowledgement
-
-The author acknowledges the scholarly and technical literature that informed the development of the framework.
-
-Any formal acknowledgements included in the final journal article will be reflected in the archived repository release where appropriate.
