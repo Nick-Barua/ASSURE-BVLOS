@@ -1,239 +1,870 @@
 # ASSURE-BVLOS
 
+<p align="center">
+
+![Status](https://img.shields.io/badge/status-revised%20reference%20implementation-0A66C2)
+![Version](https://img.shields.io/badge/version-2.0.0--revision-1F6FEB)
+![Python](https://img.shields.io/badge/python-3.13.5-3776AB?logo=python&logoColor=white)
+![License](https://img.shields.io/badge/license-BSD--3--Clause-2EA44F)
+![Evaluation](https://img.shields.io/badge/evaluation-100%2C000%20synthetic%20states-F59E0B)
+![Tests](https://img.shields.io/badge/tests-28%20passed-2EA44F)
+![Output Checks](https://img.shields.io/badge/output%20checks-65%20passed-2EA44F)
+![Reproducibility](https://img.shields.io/badge/reproducibility-code%20%2B%20data%20%2B%20tests-00A67E)
+![Journal](https://img.shields.io/badge/journal-Aerospace%20Systems-6F42C1)
+![Zenodo](https://img.shields.io/badge/Zenodo-v1.0.0-1682D4?logo=zenodo&logoColor=white)
+
+</p>
+
 ## Runtime Assurance for Risk-Adaptive Space–Air–Ground Unmanned Aircraft Operations
 
-A research framework linking five monitored risk domains, explicit uncertainty penalties, supervisory authority states, deterministic hard-limit overrides and configuration-linked evidence.
+ASSURE-BVLOS is a research framework for supervisory runtime assurance in beyond-visual-line-of-sight unmanned aircraft operations. It integrates five monitored risk domains, explicit uncertainty penalties, deterministic hard-limit overrides, adaptive supervisory authority states and configuration-linked evidence.
 
 **Author:** Nick Barua  
 **Reference implementation:** `2.0.0-revision`  
 **Associated manuscript:** *ASSURE-BVLOS: Runtime Assurance for Risk-Adaptive Space–Air–Ground Unmanned Aircraft Operations*  
-**Journal submission:** Aerospace Systems
+**Journal submission:** *Aerospace Systems*
 
-[Download code, data and figures](ESM_1.zip) · [Read supplementary methods](ESM_2.pdf) · [Reproduce the evaluation](#reproduce-the-evaluation)
+[Download Code, Data and Figures](ESM_1.zip) ·
+[Supplementary Methods](ESM_2.pdf) ·
+[Reproduce the Evaluation](#reproduce-the-evaluation)
 
-> **Research scope:** This package demonstrates the behaviour of a configured supervisory model under synthetic assumptions. It is not an aircraft controller, an operationally validated safety system or evidence of certification compliance.
-
----
-
-## Revision provenance
-
-This repository's revised computational materials contain a **newly implemented evaluation** of the documented ASSURE-BVLOS framework.
-
-The executable implementation and state-level outputs underlying the earlier numerical evaluation were unavailable for verification. Previously unreported parameters have therefore been explicitly specified for the new reference implementation, and the revised manuscript replaces the earlier numerical findings.
-
-**This is not a recovered or verified reproduction of the original simulation.** No parameter was selected to reproduce the earlier headline result.
-
-The distinction between retained methodological settings and newly specified assumptions is documented in [Supplementary Methods S2](ESM_2.pdf). The complete numerical configuration is supplied inside [Supplementary Code S1](ESM_1.zip).
-
-The identifier `2.0.0-revision` identifies the supplied implementation. It does not, by itself, indicate that a corresponding GitHub release or new Zenodo record has been published.
+> **Research scope:** This repository demonstrates the behaviour of a configured supervisory model under synthetic assumptions. It is not an aircraft controller, an operationally validated safety system, evidence of real-world accident reduction or evidence of certification compliance.
 
 ---
 
-## Current supplementary materials
+## Graphical Abstract
 
-| File | Contents |
+<p align="center">
+  <img src="ASSURE_BVLOS%20GA.png"
+       alt="ASSURE-BVLOS graphical abstract showing five monitored risk domains, uncertainty-adjusted supervisory logic, hard-limit overrides, five authority states and the revised computational evaluation."
+       width="100%">
+</p>
+
+<p align="center">
+  <em>
+    Five monitored risk domains → uncertainty-aware risk fusion → deterministic hard-limit precedence → supervisory authority adaptation → configuration-linked evidence.
+  </em>
+</p>
+
+> **Interpretation:** The graphical abstract summarises the revised reference implementation and replacement computational evaluation. The reported numerical results describe the behaviour of the configured synthetic model and should not be interpreted as validated flight-safety effectiveness, causal accident reduction or certification evidence.
+
+---
+
+## Project Status
+
+| Category | Current status |
 |---|---|
-| **[ESM_1.zip — Supplementary Code S1](ESM_1.zip)** | Executable Python implementation, configuration, all 100,000 primary synthetic states and paired outcomes, numerical results, sensitivity analyses, tests, verification logs, equation sources and revised figures. |
-| **[ESM_2.pdf — Supplementary Methods S2](ESM_2.pdf)** | Parameter provenance, complete generator settings, normalisation and authority algorithms, statistical methods, supplementary figures and reproduction instructions. |
+| **Framework maturity** | Reference supervisory runtime-assurance framework |
+| **Analytical verification** | Completed within stated mathematical scope |
+| **Executable implementation** | Available |
+| **Primary computational evaluation** | Completed |
+| **Primary sample size** | 100,000 independent synthetic states |
+| **Repeated-seed evaluation** | 10 × 100,000-state runs completed |
+| **Threshold sensitivity** | Completed |
+| **Weight sensitivity** | Completed |
+| **Domain ablation** | Completed |
+| **Uncertainty-penalty sensitivity** | Completed |
+| **Surrogate sensitivity** | Completed |
+| **Mitigation sensitivity** | Completed |
+| **Alternative fusion comparison** | Completed |
+| **Temporal supervisory-logic testing** | Completed on prescribed-score traces |
+| **Hardware-in-the-loop validation** | Not performed |
+| **Human-in-the-loop validation** | Not performed |
+| **Controlled flight validation** | Not performed |
+| **Operational BVLOS validation** | Not performed |
+| **Certification status** | Research framework; no certification claim |
 
-**The executable code is inside `ESM_1.zip`, not in a separate source-code directory at the repository root.** Extract the archive before running the commands below.
+---
 
-The archive extracts to a folder named:
+## Evidence Levels
+
+ASSURE-BVLOS deliberately separates computational maturity from operational validation.
+
+| Level | Evidence stage | Status |
+|---|---|---|
+| **V1** | Analytical properties and software verification checks | **Completed within stated scope** |
+| **V2** | Software simulation and temporal supervisory-logic testing | **Partially completed** |
+| **V3** | Hardware-in-the-loop and human-in-the-loop validation | **Not performed** |
+| **V4** | Controlled flight testing | **Not performed** |
+| **V5** | Limited authorised operational BVLOS trial | **Not performed** |
+| **V6** | Continuous assurance and configuration-controlled operation | **Not performed** |
+
+> Completion of one evidence level does not imply completion of subsequent operational, airworthiness or certification stages.
+
+---
+
+## Revision Provenance
+
+This repository now contains a **newly implemented computational evaluation** of the documented ASSURE-BVLOS framework.
+
+The executable implementation and state-level outputs underlying the earlier numerical evaluation were unavailable for verification. Previously unreported parameters were therefore explicitly specified for the revised reference implementation, and the revised manuscript replaces the earlier numerical findings.
+
+**This is not a recovered or verified reproduction of the original simulation.**
+
+No parameter in the replacement implementation was selected for the purpose of reproducing the earlier headline result.
+
+The distinction between:
+
+- settings retained from the submitted framework, and
+- parameters newly specified for the replacement evaluation
+
+is documented in [Supplementary Methods S2](ESM_2.pdf).
+
+The complete computational configuration is supplied inside [Supplementary Code S1](ESM_1.zip).
+
+The identifier:
+
+```text
+2.0.0-revision
+```
+
+identifies the supplied reference implementation. It does not itself indicate publication acceptance, certification, a new Zenodo DOI or a formal GitHub software release.
+
+---
+
+## Supplementary Materials
+
+| Resource | Description |
+|---|---|
+| **[ESM_1.zip — Supplementary Code S1](ESM_1.zip)** | Executable Python implementation, configuration, complete 100,000-state primary population, paired outcomes, sensitivity analyses, numerical results, tests, audit outputs, equation sources and figure sources |
+| **[ESM_2.pdf — Supplementary Methods S2](ESM_2.pdf)** | Parameter provenance, generator specification, normalisation rules, statistical methods, supplementary figures, sensitivity descriptions and reproduction guidance |
+
+### Important
+
+The executable implementation is contained inside:
+
+```text
+ESM_1.zip
+```
+
+It is not stored as a separate source-code directory at the repository root.
+
+After extraction, the main directory is:
 
 ```text
 Supplementary_Code_S1/
 ```
 
-The package includes the complete primary population. The accompanying 1,000-row CSV is a convenience excerpt, not the dataset used for the reported analysis.
+The package contains the **complete analysis population**.
 
-<!--
-GRAPHICAL ABSTRACT — ACTIVATE AFTER CORRECTION
-
-Before displaying the revised graphical abstract:
-1. Replace "Event rate (%)" with "Simulated hazardous-outcome probability (%)".
-2. Route sensor disagreement and data age into the adjusted decision-score block.
-3. Upload the corrected image to the repository root using this exact filename:
-   ASSURE_BVLOS_Graphical_Abstract_Revised.png
-
-Then remove this enclosing HTML comment.
-
-## Graphical abstract
-
-![ASSURE-BVLOS: five monitored domains, uncertainty-adjusted supervisory logic, hard-limit precedence and replacement synthetic evaluation](ASSURE_BVLOS_Graphical_Abstract_Revised.png)
-
-The graphical abstract is a visual summary. The executable configuration and supplementary methods define the model, numerical assumptions and interpretation.
+The included 1,000-row CSV file is only a convenience sample and is **not** the population used to generate the reported results.
 
 ---
--->
 
-## Framework overview
+# Framework
 
-ASSURE-BVLOS combines five normalised domain scores.
+## Five Monitored Risk Domains
 
-| Domain | Reference implementation inputs |
+ASSURE-BVLOS uses five normalised runtime risk domains.
+
+| Code | Domain | Reference implementation inputs |
+|---|---|---|
+| `rC2` | **Command-and-control integrity** | Round-trip time, jitter and packet loss |
+| `rS` | **Sensing reliability** | Sensor-confidence deficit |
+| `rD` | **External-data integrity** | Provenance deficit |
+| `rE` | **Environmental exposure** | Weather and exposure scores |
+| `rV` | **Vehicle health** | Energy reserve and health deficit |
+
+Two additional quantities are intentionally represented separately:
+
+| Quantity | Meaning |
 |---|---|
-| **Command-and-control integrity** | Round-trip time, jitter and packet loss. |
-| **Sensing reliability** | Sensor-confidence deficit. |
-| **External-data integrity** | Provenance deficit. |
-| **Environmental exposure** | Weather and exposure scores. |
-| **Vehicle health** | Energy reserve and health deficit. |
+| `Ds` | Sensor disagreement |
+| `Ad` | Bounded external-data-age term |
 
-Sensor disagreement and bounded external-data age enter as **separate uncertainty penalties**. They are excluded from the corresponding nominal sensing and data scores in this implementation to avoid counting those particular inputs twice.
+These uncertainty terms are kept separate from the corresponding nominal sensing and data scores in the reference implementation to avoid counting those specific observables twice.
 
-### Risk aggregation
+---
 
-The nominal engineering index is:
+## Nominal Risk Aggregation
 
-$$
-R = 1 - \prod_{i:w_i>0}(1-r_i)^{w_i},
-\qquad
+The nominal engineering index is a weighted multiplicative complement:
+
+```math
+R = 1 - \prod_{i:w_i>0}\left(1-r_i\right)^{w_i}
+```
+
+subject to:
+
+```math
 \sum_i w_i = 1,
 \qquad
-w_i \geq 0.
-$$
+w_i \geq 0
+```
 
-All five reference weights are `0.20`. Zero-weight domains are omitted from the product.
+The revised reference configuration uses equal weights:
 
-The uncertainty-adjusted decision score is:
+```math
+w_{C2} = w_S = w_D = w_E = w_V = 0.20
+```
 
-$$
-R^{*}
-=
-\min\left(1,\;R+\lambda_s D_s+\lambda_a A_d\right),
-\qquad
-\lambda_s=\lambda_a=0.10.
-$$
+Zero-weight domains are omitted from the product.
 
-Here, `D_s` is sensor disagreement and `A_d` is the bounded data-age term.
+### Mathematical Interpretation
 
-The nominal index is bounded and monotonic for the stated inputs and weights. **It is not a calibrated accident probability.** Equal weighting is an uncalibrated reference choice, not evidence that all domains have equal physical safety significance.
+For the stated domain range and non-negative unit-sum weights, the nominal index is:
 
-### Supervisory authority states
+- bounded in `[0,1]`;
+- monotonic in each active input;
+- continuous over the closed input domain;
+- smooth in the interior; and
+- sensitive to concurrent degradation.
 
-| State | Nominal score interval | Requested response |
+It remains an **engineering ranking index**.
+
+It is **not** a calibrated probability of an aircraft accident.
+
+Equal weights are used as an explicit uncalibrated reference configuration. They do not imply that the five physical domains have equal operational safety importance.
+
+---
+
+## Uncertainty-Adjusted Decision Score
+
+The supervisory decision score is:
+
+```math
+R^{*} =
+\min\left[
+1,\;
+R + \lambda_s D_s + \lambda_a A_d
+\right]
+```
+
+with:
+
+```math
+\lambda_s = \lambda_a = 0.10
+```
+
+where:
+
+- `D_s` represents sensor disagreement; and
+- `A_d` represents the bounded external-data-age term.
+
+Each uncertainty term can add at most `0.10` to the nominal risk index before clipping in the reference configuration.
+
+The clipping operation ensures:
+
+```math
+0 \leq R^{*} \leq 1
+```
+
+The uncertainty penalties are explicit engineering assumptions rather than statistically calibrated confidence bounds.
+
+Sensor disagreement and data age are represented separately from the five nominal domain scores so that these particular uncertainty indicators remain visible in the supervisory decision and are not counted twice in the reference implementation.
+
+---
+
+# Supervisory Authority
+
+## Authority States
+
+| State | Nominal interval | Supervisory request |
 |---|---|---|
-| **S0 — Nominal** | `R* < 0.25` | Continue under supervision within the declared envelope. |
-| **S1 — Constrained** | `0.25 ≤ R* < 0.42` | Constrain operation or increase monitoring. |
-| **S2 — Protected autonomy** | `0.42 ≤ R* < 0.60` | Request an on-board protected response. |
-| **S3 — Contingency** | `0.60 ≤ R* < 0.76` | Request a hold, diversion, return, landing or hazard-volume exit. |
-| **S4 — Minimum risk / terminate** | `R* ≥ 0.76` | Request the predefined minimum-risk or termination procedure. |
+| **S0 — Nominal** | `R* < 0.25` | Continue under supervision within the declared envelope |
+| **S1 — Constrained** | `0.25 ≤ R* < 0.42` | Constrain speed, separation or manoeuvres; increase monitoring |
+| **S2 — Protected autonomy** | `0.42 ≤ R* < 0.60` | Request an on-board protected response while retaining supervision |
+| **S3 — Contingency** | `0.60 ≤ R* < 0.76` | Request hold, diversion, return, landing or hazard-volume exit |
+| **S4 — Minimum risk / terminate** | `R* ≥ 0.76` | Request the predefined minimum-risk or termination procedure |
 
-These thresholds are **synthetic reference settings**, not operational acceptance criteria or regulatory limits.
+These thresholds are **synthetic methodological reference settings**.
 
-Deterministic hard-limit rules bypass scalar aggregation and enforce minimum requested states. Both policies share S3/S4 hard-limit protections; the adaptive policy additionally includes a moderate-C2 protection floor.
+They are not:
 
-The static baseline assumes ordinary lower-level flight stabilisation but does not aggregate cross-domain evidence. It is a defined reference comparator, not a representation of every existing BVLOS architecture.
-
-Logical precedence does not establish physical independence of an operational safety monitor. Likewise, requesting a response does not prove that an aircraft can execute it safely.
+- regulatory thresholds,
+- operational approval limits,
+- certified acceptance criteria,
+- or demonstrated optimal thresholds.
 
 ---
 
-## Primary computational results
+## Deterministic Hard-Limit Overrides
 
-The primary evaluation uses **100,000 independent synthetic states**, NumPy's PCG64 generator and seed `20260918`.
+Hard conditions can bypass the scalar fusion layer.
 
-The three archetypes are disaster response, linear-infrastructure inspection and maritime surveillance. These are controlled synthetic scenarios, not measured samples of operational missions.
+In the reference implementation, both comparison policies request **S4** for:
 
-| Measure | Revised reference result |
+- declared flight-control failure; or
+- critically low energy reserve.
+
+They request at least **S3** for:
+
+- invalid navigation;
+- geofence breach;
+- very high C2 risk.
+
+The adaptive ASSURE-BVLOS policy additionally requests at least **S2** under the configured moderate-C2 protection condition.
+
+The selected authority request is the most conservative state required by either:
+
+1. the aggregate decision score; or
+2. an applicable hard-limit rule.
+
+These rules test supervisory precedence.
+
+They do **not** demonstrate:
+
+- independence of the operational monitor,
+- physical fault recovery,
+- feasibility of a commanded trajectory,
+- successful landing,
+- or successful termination.
+
+---
+
+# Computational Evaluation
+
+## Study Design
+
+The primary evaluation uses:
+
+```text
+100,000 independent synthetic states
+```
+
+Random-number generator:
+
+```text
+NumPy PCG64
+```
+
+Primary seed:
+
+```text
+20260918
+```
+
+The three equiprobable synthetic mission archetypes are:
+
+1. **Disaster response**
+2. **Linear-infrastructure inspection**
+3. **Maritime surveillance**
+
+These mission archetypes are controlled test scenarios.
+
+They are **not** intended to represent the measured global distribution of BVLOS operations.
+
+---
+
+## Static Baseline
+
+The reference baseline is a **static hard-limit supervisory comparator**.
+
+It assumes ordinary lower-level flight stabilisation but does not:
+
+- fuse the five risk domains;
+- use the uncertainty-adjusted aggregate score; or
+- respond to the configured moderate-C2 protection threshold.
+
+It retains the shared hard-limit protections.
+
+The baseline is therefore not an uncontrolled aircraft and is not presented as representative of every existing BVLOS architecture.
+
+---
+
+## Synthetic Outcome Surrogate
+
+The framework is evaluated using a configured logistic hazardous-outcome surrogate.
+
+The surrogate uses the same broad risk inputs monitored by the policy.
+
+State-dependent nominal mitigation factors are:
+
+| State | Assumed mitigation |
 |---|---:|
-| Baseline simulated hazardous outcomes | 10,739 / 100,000 |
-| ASSURE-BVLOS simulated hazardous outcomes | 8,083 / 100,000 |
-| Baseline realised outcome proportion | **10.739%** |
-| ASSURE-BVLOS realised outcome proportion | **8.083%** |
-| Paired difference, baseline minus ASSURE-BVLOS | **2.656 percentage points** |
-| 95% paired-bootstrap interval for the difference | **2.557–2.757 percentage points** |
-| Relative difference from the baseline | 24.73% |
-| Critical-state recall | 40.20% |
-| S2–S4 intervention burden | 9.768% |
-| S1–S4 combined constraint/intervention share | 75.554% |
+| S0 | 0% |
+| S1 | 22% |
+| S2 | 43% |
+| S3 | 66% |
+| S4 | 82% |
 
-The bootstrap uses 10,000 paired resampling replicates. Its interval describes Monte Carlo sampling variability conditional on the configured model. It does not quantify uncertainty about real-world safety effectiveness.
+These are synthetic scenario-test assumptions.
 
-**These percentages are dimensionless simulated outcome proportions—not hazardous events per flight hour, per mission or per kilometre.**
+They are **not empirical measurements of intervention effectiveness**.
 
-### Interpretation of the comparison
+Because the adaptive policy can request more conservative states and mitigation increases with authority state, the nominal outcome model structurally favours the adaptive policy.
 
-The baseline and adaptive policies receive the same generated states and share the outcome random variates.
-
-The nominal mitigation schedule increases with the requested authority state. Because the adaptive policy requests states at least as conservative as the baseline, these assumptions structurally favour its nominal outcome comparison.
-
-**The lower simulated proportion is therefore not independent evidence that ASSURE-BVLOS reduces real-world accidents.** The evaluation examines allocation, magnitude, sensitivity and internal consistency within the specified model.
-
-The current numerical sources are `results/summary.json` and the generated CSV files inside `ESM_1.zip`.
+The primary result must therefore be interpreted as a **configured model comparison**, not independent evidence of causal safety improvement.
 
 ---
 
-## Sensitivity analyses and contrary findings
+# Primary Results
 
-The package includes threshold sensitivity, domain ablation, vehicle-weight variation, random weight perturbations, uncertainty-penalty variation, surrogate and mitigation sensitivity, repeated random seeds, and alternative aggregation comparisons.
+## Paired Synthetic Comparison
 
-Important qualifications are retained:
+| Measure | Result |
+|---|---:|
+| Baseline hazardous outcomes | **10,739 / 100,000** |
+| ASSURE-BVLOS hazardous outcomes | **8,083 / 100,000** |
+| Baseline realised simulated outcome proportion | **10.739%** |
+| ASSURE-BVLOS realised simulated outcome proportion | **8.083%** |
+| Absolute paired difference | **2.656 percentage points** |
+| 95% paired-bootstrap interval | **2.557–2.757 percentage points** |
+| Relative difference from baseline | **24.73%** |
 
-- **Threshold trade-offs:** Lower thresholds increase critical-state recall but also increase intervention burden.
-- **Fusion comparison:** At the matched budget of 9,768 interventions, arithmetic fusion achieved 40.45% recall, compared with 40.20% for multiplicative fusion and 31.78% for maximum fusion. This retrospective diagnostic does not establish multiplicative superiority.
-- **Intervention assumptions:** Adding an adverse conditional probability of `0.05` where the adaptive policy requests a higher state than the baseline reverses the mean conditional outcome comparison. This is a stress-test assumption, not a measured intervention-risk estimate.
+The paired cells are:
 
-Across ten seeds, each generating 100,000 states, the realised paired difference ranged from **2.534 to 2.711 percentage points**.
+| Pair outcome | States |
+|---|---:|
+| Neither policy produces an outcome | 89,261 |
+| Baseline only | 2,656 |
+| ASSURE-BVLOS only | 0 |
+| Both policies | 8,083 |
 
-Critical-state labels are author-specified and share monitored inputs with the policy. They are not independently measured operational ground truth. The finite sensitivity grids are not an exhaustive global sensitivity analysis.
+The absence of ASSURE-BVLOS-only outcomes follows from the nominal nested probability construction and shared outcome draw.
 
-### Separate temporal logic tests
+It should **not** be interpreted as evidence that the system eliminates every possible real-world failure mode.
 
-The main outcome comparison does **not** simulate temporal mission trajectories or apply hysteresis across sampled states.
+---
 
-A separate test evaluates the supervisor on **500 prescribed-score traces of 600 one-second ticks each**.
+## Statistical Interpretation
 
-| Measure | Memoryless supervisor | Hysteretic supervisor |
+The primary analysis uses one common uniform random variate per synthetic state for both comparison policies, preserving pairing.
+
+The paired bootstrap uses:
+
+```text
+10,000 replicates
+```
+
+Bootstrap seed:
+
+```text
+20261001
+```
+
+The confidence interval quantifies Monte Carlo sampling variability **conditional on the specified synthetic generator and surrogate model**.
+
+It does not quantify:
+
+- model-form uncertainty,
+- uncertainty in assumed mitigation effectiveness,
+- uncertainty in operational exposure,
+- real-world accident risk,
+- or regulatory safety confidence.
+
+### Important terminology
+
+The reported percentages are:
+
+> **dimensionless simulated hazardous-outcome proportions**
+
+They are **not**:
+
+- events per flight hour,
+- events per mission,
+- events per kilometre,
+- operational accident rates,
+- or certified safety probabilities.
+
+---
+
+# Mission-Specific Results
+
+| Mission archetype | Baseline | ASSURE-BVLOS |
 |---|---:|---:|
-| Mean state changes per trace | 97.556 | 5.836 |
-| Mean proportion of ticks in S2–S4 | 29.699% | 63.727% |
+| **Disaster response** | 13.60% | 10.02% |
+| **Linear-infrastructure inspection** | 7.43% | 5.89% |
+| **Maritime surveillance** | 11.18% | 8.33% |
 
-Hysteresis reduces switching while substantially increasing protected-state occupancy. These are logic-test results, not measurements of aircraft stability, pilot workload, physical transition latency or safe fallback execution.
+S2–S4 intervention burden:
+
+| Mission archetype | S2–S4 burden |
+|---|---:|
+| Disaster response | **11.93%** |
+| Linear-infrastructure inspection | **6.91%** |
+| Maritime surveillance | **10.46%** |
+
+The configured disaster scenario has lower confidence and greater environmental burden than the infrastructure case.
+
+The configured maritime scenario combines older external information with lower energy reserve.
+
+These differences arise from the specified synthetic generator.
+
+They should not be interpreted as measured rankings of real-world mission safety.
 
 ---
 
-## Reproduce the evaluation
+# Authority-State Behaviour
 
-### 1. Download and extract
+Nominal ASSURE-BVLOS authority occupancy:
 
-Download [ESM_1.zip](ESM_1.zip). From the folder containing the downloaded archive:
+| State | Number of states | Share |
+|---|---:|---:|
+| **S0** | 24,446 | 24.446% |
+| **S1** | 65,786 | 65.786% |
+| **S2** | 8,951 | 8.951% |
+| **S3** | 270 | 0.270% |
+| **S4** | 547 | 0.547% |
+
+Therefore:
+
+```text
+S2–S4 intervention burden = 9.768%
+```
+
+and:
+
+```text
+S1–S4 constrained/intervention share = 75.554%
+```
+
+The nominal configured critical-state recall is:
+
+```text
+40.20%
+```
+
+The corresponding compound-only recall is:
+
+```text
+36.36%
+```
+
+These labels are author-specified diagnostics derived from the synthetic monitored inputs.
+
+They are not independently measured operational ground truth.
+
+---
+
+# Residual Simulated Outcomes
+
+The revised analysis explicitly evaluates the 8,083 remaining ASSURE-BVLOS synthetic outcomes.
+
+| Authority state | Residual outcomes |
+|---|---:|
+| S0 | 1,100 |
+| S1 | 5,479 |
+| S2 | 1,466 |
+| S3 | 21 |
+| S4 | 17 |
+
+Approximately:
+
+```text
+81.39%
+```
+
+of residual synthetic outcomes occur in S0 or S1.
+
+This occurs because:
+
+- the surrogate remains non-zero below intervention thresholds;
+- S1 provides only partial assumed mitigation;
+- higher-risk states remain probabilistic;
+- even S4 retains residual surrogate probability under the nominal mitigation schedule.
+
+These are modelled outcomes, not diagnosed real aircraft failures.
+
+---
+
+# Sensitivity Analyses
+
+The revised package includes:
+
+- **25** threshold settings;
+- **5** leave-one-domain-out ablations;
+- **7** vehicle-weight settings;
+- **200** random Dirichlet weight vectors;
+- **25** uncertainty-penalty combinations;
+- multiple surrogate coefficient/intercept configurations;
+- interaction-term removal;
+- **4** mitigation schedules;
+- **4** adverse-intervention assumptions;
+- arithmetic fusion comparison;
+- multiplicative fusion comparison;
+- maximum fusion comparison;
+- **10** random seeds;
+- prescribed-score temporal supervisor testing.
+
+These are finite diagnostic sensitivity analyses.
+
+They are not a full global variance decomposition or Sobol analysis.
+
+---
+
+## Threshold Sensitivity
+
+| Threshold multiplier | Mean conditional ASSURE probability | Critical recall | S2–S4 burden |
+|---|---:|---:|---:|
+| **0.70** | 6.127% | 96.73% | 51.98% |
+| **0.90** | 7.543% | 61.33% | 16.39% |
+| **1.00** | 7.963% | 40.20% | 9.77% |
+| **1.10** | 8.268% | 29.51% | 7.62% |
+| **1.30** | 8.821% | 25.65% | 7.00% |
+
+Lower thresholds increase critical-state recall but substantially increase supervisory intervention burden.
+
+No threshold configuration is declared optimal.
+
+---
+
+## Domain Ablation
+
+With equal nominal weights:
+
+- omitting vehicle health reduced recall from **40.20% to 36.65%**;
+- omitting environment reduced recall to **32.37%**;
+- omitting sensing produced **38.36%** recall;
+- omitting data produced **39.64%** recall;
+- omitting C2 increased recall to **51.82%** under the retained independent C2 protection channel and renormalised remaining weights.
+
+These results demonstrate interactions between:
+
+- aggregate weights,
+- renormalisation,
+- uncertainty penalties,
+- and independent hard-limit/protection rules.
+
+An apparent improvement under ablation does not imply that the omitted domain should be removed operationally.
+
+---
+
+## Vehicle-Weight Sensitivity
+
+Nominal vehicle-health weight:
+
+```text
+0.20
+```
+
+At vehicle-health weight `0.40`:
+
+```text
+Critical-state recall = 51.36%
+S2–S4 burden = 13.42%
+```
+
+At vehicle-health weight `0.60`:
+
+```text
+Critical-state recall = 63.83%
+S2–S4 burden = 20.71%
+```
+
+Because the weights sum to one, increasing one domain necessarily decreases the aggregate weighting available to the other domains.
+
+Therefore, these results do not show a free increase in safety sensitivity.
+
+---
+
+# Fusion Alternatives
+
+At the nominal thresholds:
+
+| Fusion method | Critical recall | S2–S4 burden |
+|---|---:|---:|
+| Arithmetic | 33.35% | 8.27% |
+| Multiplicative | 40.20% | 9.77% |
+| Maximum | 93.70% | 65.80% |
+
+Because each rule produces a different intervention burden, an additional matched-budget comparison was performed.
+
+At a budget of:
+
+```text
+9,768 interventions
+```
+
+the corresponding critical-state recalls were:
+
+| Fusion method | Matched-budget recall |
+|---|---:|
+| **Arithmetic** | **40.45%** |
+| **Multiplicative** | **40.20%** |
+| **Maximum** | **31.78%** |
+
+Therefore, the study does **not** claim that multiplicative fusion is empirically superior.
+
+Its purpose in ASSURE-BVLOS is to provide a transparent, bounded and analytically tractable reference aggregation rule.
+
+---
+
+# Intervention-Assumption Sensitivity
+
+When all mitigation is set to zero:
+
+```text
+Baseline outcomes = ASSURE-BVLOS outcomes
+```
+
+Under a separate adverse-intervention stress test, an additional conditional probability is added wherever ASSURE-BVLOS requests greater authority than the baseline.
+
+At:
+
+```text
+k = 0.05
+```
+
+the mean conditional difference becomes:
+
+```text
+−1.1055 percentage points
+```
+
+meaning the direction of the nominal comparison reverses.
+
+The approximate break-even value is:
+
+```text
+k ≈ 0.03522
+```
+
+per additionally assigned state.
+
+This stress test demonstrates that the headline comparison depends materially on assumptions about intervention effectiveness.
+
+The adverse-intervention values are methodological stress parameters.
+
+They are not empirical estimates of intervention risk.
+
+---
+
+# Repeated-Seed Stability
+
+Ten independent seeds were evaluated.
+
+Each seed generated:
+
+```text
+100,000 states
+```
+
+The realised paired difference ranged from:
+
+```text
+2.534 to 2.711 percentage points
+```
+
+Mean:
+
+```text
+2.6201 percentage points
+```
+
+Sample standard deviation:
+
+```text
+0.0513 percentage points
+```
+
+The mean conditional probability difference was:
+
+```text
+2.6286 percentage points
+```
+
+with standard deviation:
+
+```text
+0.0128 percentage points
+```
+
+These results assess Monte Carlo stability under the same configured generator.
+
+They do not establish robustness to unmodelled aircraft, network, environmental or human mechanisms.
+
+---
+
+# Temporal Supervisory-Logic Test
+
+The primary Monte Carlo evaluation samples independent states and does **not** simulate a temporal flight mission.
+
+A separate supervisory-logic test uses:
+
+```text
+500 traces
+600 ticks per trace
+1 second per tick
+300,000 total evaluated ticks
+```
+
+The same prescribed-score traces are supplied to:
+
+1. a memoryless supervisor; and
+2. a hysteretic supervisor.
+
+Results:
+
+| Metric | Memoryless | Hysteretic |
+|---|---:|---:|
+| Mean state changes per trace | **97.556** | **5.836** |
+| Mean S2–S4 occupancy | **29.699%** | **63.727%** |
+
+The hysteretic logic strongly reduces switching but substantially increases protected-state occupancy.
+
+No configured override-floor violation occurred in the 300,000 tested ticks.
+
+These tests concern **supervisory requests only**.
+
+They do not demonstrate:
+
+- aircraft dynamic stability,
+- safe closed-loop switching,
+- bounded physical transition latency,
+- acceptable pilot workload,
+- realistic network behaviour,
+- successful fallback execution,
+- or mission-level safety improvement.
+
+---
+
+# Reproduce the Evaluation
+
+## 1. Download
+
+Download:
+
+[**ESM_1.zip**](ESM_1.zip)
+
+---
+
+## 2. Extract
+
+From the directory containing the downloaded archive:
 
 ```bash
 python -m zipfile -e ESM_1.zip .
 cd Supplementary_Code_S1
 ```
 
-Keep the downloaded archive unchanged as the reference copy.
+Keep the original downloaded archive unchanged as the reference copy.
 
-### 2. Create an isolated Python environment
+---
 
-The supplied execution used **Python 3.13.5**.
+## 3. Create a Python Environment
+
+The supplied execution environment used:
+
+```text
+Python 3.13.5
+```
+
+Create a virtual environment:
 
 ```bash
 python -m venv .venv
 ```
 
-Activate the environment using the command for your operating system.
-
-**Linux/macOS:**
+### Linux / macOS
 
 ```bash
 source .venv/bin/activate
 ```
 
-**Windows PowerShell:**
+### Windows PowerShell
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-Install the recorded dependencies:
+Install dependencies:
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-The supplied requirements record:
+The recorded principal versions are:
 
 ```text
 numpy==2.3.5
@@ -242,33 +873,81 @@ pandas==2.2.3
 matplotlib==3.10.8
 ```
 
-Exact replay was checked in the recorded environment. A fresh installation on another platform was not independently validated; cross-platform byte-for-byte equality is not guaranteed.
+Exact replay was verified in the recorded environment.
 
-### 3. Run tests, reproduce the study and regenerate numerical figures
-
-Run these commands from `Supplementary_Code_S1`:
-
-```bash
-python -m unittest discover -s tests -v
-
-python run_study.py --config config.json --output replay
-
-python verify_outputs.py --results replay
-
-python make_figures.py --results replay --output replay_figures
-```
-
-The `replay` directory keeps newly generated analysis outputs separate from the supplied `results` directory.
-
-After dependencies are installed, numerical reproduction requires no external dataset, API, model download or GPU.
-
-`make_figures.py` generates Figures 4–7 and supplementary Figures S1–S3 from the saved numerical outputs. Figures 1–3 are conceptual diagrams with separate artwork source and pre-rendered versions. Their optional regeneration dependencies are described in the package README and supplementary methods.
+A fresh installation on a different platform was not independently tested for byte-level equality.
 
 ---
 
-## Package contents
+## 4. Run the Tests
 
-The principal files inside the extracted archive are:
+```bash
+python -m unittest discover -s tests -v
+```
+
+Recorded result:
+
+```text
+28 tests passed
+```
+
+---
+
+## 5. Reproduce the Computational Study
+
+```bash
+python run_study.py --config config.json --output replay
+```
+
+The `replay` directory keeps regenerated outputs separate from the supplied reference results.
+
+---
+
+## 6. Verify Outputs
+
+```bash
+python verify_outputs.py --results replay
+```
+
+The verification procedure checks:
+
+- primary-array consistency;
+- stored hashes;
+- headline outcome totals;
+- scenario totals;
+- derived numerical outputs.
+
+---
+
+## 7. Regenerate Numerical Figures
+
+```bash
+python make_figures.py --results replay --output replay_figures
+```
+
+This regenerates the numerical figures associated with:
+
+- Figure 4;
+- Figure 5;
+- Figure 6;
+- Figure 7;
+- Figure S1;
+- Figure S2;
+- Figure S3.
+
+Figures 1–3 are conceptual artwork and have separate source/rendering files.
+
+After Python dependencies are installed, reproducing the numerical study requires:
+
+- no external dataset;
+- no web API;
+- no model download;
+- no GPU;
+- no operational aircraft system.
+
+---
+
+# Package Structure
 
 ```text
 Supplementary_Code_S1/
@@ -286,11 +965,14 @@ Supplementary_Code_S1/
 ├── verify_outputs.py
 ├── make_figures.py
 ├── draw_conceptual_figures.py
+│
 ├── assure_bvlos/
 │   ├── __init__.py
 │   └── model.py
+│
 ├── tests/
 │   └── test_model.py
+│
 ├── results/
 │   ├── primary_states.npz
 │   ├── primary_states_sample_1000.csv
@@ -315,120 +997,410 @@ Supplementary_Code_S1/
 │   ├── verification_report.json
 │   ├── unit_tests.txt
 │   └── run_log.txt
+│
 ├── figures/
 └── audit/
 ```
 
-`results/primary_states.npz` contains the full primary population, raw observables, normalised scores, policy states, probabilities, labels and paired outcomes.
+---
 
-`data_dictionary.csv` documents the saved arrays. The configuration file supplies the generator parameters, normalisations, weights, thresholds, override rules, surrogate coefficients, mitigation assumptions, seeds and sensitivity settings.
+# Data Files
+
+## `primary_states.npz`
+
+Contains the complete primary synthetic population.
+
+The stored information includes:
+
+- generated observables;
+- five normalised risk domains;
+- uncertainty terms;
+- scenario identifiers;
+- link identifiers;
+- hard-fault flags;
+- aggregate decision score;
+- baseline authority state;
+- ASSURE-BVLOS authority state;
+- conditional probabilities;
+- common random outcome variate;
+- paired binary outcomes;
+- critical-state labels.
 
 ---
 
-## Recorded verification
+## `primary_states_sample_1000.csv`
 
-The packaged final audit records:
+This is a convenience sample for inspection.
 
-| Check | Recorded outcome |
+It is **not** the analysis population.
+
+---
+
+## `data_dictionary.csv`
+
+Documents the arrays and variables included in the supplied data.
+
+---
+
+# Recorded Verification
+
+The final packaged audit records:
+
+| Check | Result |
 |---|---:|
-| Implementation tests | 28 passed |
-| Output-consistency checks | 65 passed |
-| Saved primary arrays matching the same-environment rerun | 29 |
-| Result CSV files matching byte for byte | 16 |
+| Implementation tests | **28 passed** |
+| Output-consistency checks | **65 passed** |
+| Primary arrays matching same-environment replay | **29** |
+| Result CSV files matching byte-for-byte | **16** |
 
-Audit details are supplied in `audit/` and the verification files under `results/`.
-
-The configuration SHA-256 recorded for the reported evaluation is:
+The recorded configuration SHA-256 is:
 
 ```text
 82ab6791a44b771a66360d719d94c7ca6a800cd127e0f7e7721d3148fa256baa
 ```
 
-A hash identifies file contents. It does not prove scientific correctness, external preregistration, software qualification or operational safety.
+A SHA-256 value identifies exact file contents.
 
-These are recorded implementation and consistency checks, not an independent external validation campaign.
+It does **not** prove:
+
+- scientific correctness;
+- preregistration;
+- software qualification;
+- aviation certification;
+- external validation;
+- or operational safety.
 
 ---
 
-## Current figures and historical artwork
+# Figures
 
-The revised figure set is provided in the `figures/` directory inside [ESM_1.zip](ESM_1.zip).
+The revised figure set is contained inside `ESM_1.zip`.
 
-| Figure | Subject |
+| Figure | Description |
 |---|---|
-| **Figure 1** | Proposed ASSURE-BVLOS architecture. |
-| **Figure 2** | Authority bands and recovery logic, including latched S4. |
-| **Figure 3** | Illustrative safety-case claims and evidence. |
-| **Figure 4** | Primary normalised domain distributions. |
-| **Figure 5** | Primary paired simulated outcome probabilities. |
-| **Figure 6** | Simulated outcome probabilities by archetype. |
-| **Figure 7** | Threshold sensitivity of recall and intervention burden. |
-| **Figure S1** | Vehicle weighting and the recall–burden trade-off. |
-| **Figure S2** | Sensitivity to an adverse-intervention assumption. |
-| **Figure S3** | Example prescribed-score authority trace. |
+| **Figure 1** | Proposed ASSURE-BVLOS architecture |
+| **Figure 2** | Authority bands and proposed recovery logic |
+| **Figure 3** | Illustrative safety-case claims and evidence |
+| **Figure 4** | Primary normalised domain distributions |
+| **Figure 5** | Primary paired simulated outcome probabilities |
+| **Figure 6** | Simulated outcome probabilities by mission archetype |
+| **Figure 7** | Threshold sensitivity of recall and intervention burden |
+| **Figure S1** | Vehicle weighting and recall–burden trade-off |
+| **Figure S2** | Sensitivity to an adverse-intervention assumption |
+| **Figure S3** | Example prescribed-score authority trace |
 
-Figures S1–S3 are also included in [ESM_2.pdf](ESM_2.pdf).
+Figures S1–S3 are also included in:
 
-**Historical artwork notice:** The older standalone files named `Figure_1_...png` through `Figure_6_...png`, together with the earlier `ASSURE_BVLOS_Graphical_Abstract.png`, belong to the previous manuscript version. They are not the current figures for the replacement evaluation.
-
-Use the revised figures supplied inside `ESM_1.zip`. Historical numerical artwork must not be presented as evidence for the current results.
+[**ESM_2.pdf**](ESM_2.pdf)
 
 ---
 
-## Scientific scope and responsible use
+# Historical Artwork Notice
 
-This study uses synthetic states, engineering normalisations, assumed outcome-surrogate coefficients and prescribed mitigation effects.
+The older standalone manuscript figures belong to the earlier numerical evaluation.
 
-The main evaluation omits aircraft dynamics, physical encounter geometry, realistic network time series, additional measurement error, pilot behaviour and common-cause failures. Hard-fault flags exercise decision priority rather than simulate fault-specific crash or recovery physics.
+In particular, artwork showing approximately:
 
-The package does not establish operational accident probabilities, causal intervention effectiveness, safe fallback execution, regulatory acceptance or certification compliance.
+```text
+Baseline:       12.758%
+ASSURE-BVLOS:    9.619%
+```
 
-Closed-loop simulation, representative monitor testing, hardware- and human-in-the-loop studies, and controlled flight validation remain necessary before operational conclusions can be drawn.
+does **not** represent the replacement evaluation.
 
-**Do not use this research implementation as the sole basis for real-world flight-safety, termination, certification or deployment decisions.**
+The current reference results are:
+
+```text
+Baseline:       10.739%
+ASSURE-BVLOS:    8.083%
+```
+
+Use the revised figures supplied inside `ESM_1.zip` for the current computational evaluation.
+
+Older artwork may be retained for historical provenance but should not be presented as current evidence.
 
 ---
 
-## Citation and archival status
+# Validation Roadmap
 
-For the replacement computational evaluation, use the implementation identifier and record the repository commit corresponding to the files used.
+## V1 — Analytical and Software Checks
+
+**Status:** Completed within stated scope
+
+Current evidence includes:
+
+- boundedness analysis;
+- monotonicity analysis;
+- continuity discussion;
+- endpoint handling;
+- hard-limit precedence testing;
+- 28 implementation tests;
+- exact reference replay checks.
+
+This does not establish aircraft safety.
+
+---
+
+## V2 — Software Simulation
+
+**Status:** Partial
+
+Completed:
+
+- independent-state synthetic evaluation;
+- paired outcome analysis;
+- threshold sensitivity;
+- weight sensitivity;
+- ablation analysis;
+- surrogate sensitivity;
+- mitigation sensitivity;
+- repeated seeds;
+- prescribed-score temporal supervisor testing.
+
+Still required:
+
+- realistic temporal missions;
+- correlated network behaviour;
+- coupled aircraft dynamics;
+- encounter geometry;
+- common-cause faults;
+- independently specified physical outcomes.
+
+---
+
+## V3 — Hardware-in-the-Loop / Human-in-the-Loop
+
+**Status:** Not performed
+
+Future evidence should include:
+
+- autopilot integration;
+- communications emulator;
+- monitor timing;
+- fault injection;
+- operator station;
+- annunciation;
+- mode awareness;
+- pilot workload;
+- intervention timing.
+
+---
+
+## V4 — Controlled Flight
+
+**Status:** Not performed
+
+Future work requires an approved test environment and predefined scenario matrix with independent observation of actual aircraft response.
+
+---
+
+## V5 — Limited Operational Trial
+
+**Status:** Not performed
+
+A later authorised BVLOS trial would require:
+
+- missions or flight-hour denominators;
+- operational exposure information;
+- workload evidence;
+- monitor performance;
+- residual-risk evidence;
+- operational acceptance criteria.
+
+---
+
+## V6 — Continuous Assurance
+
+**Status:** Not performed
+
+Future operational deployment would require:
+
+- configuration-controlled updates;
+- regression testing;
+- change-impact assessment;
+- traceable evidence;
+- independent review.
+
+---
+
+# Current Scientific Limitations
+
+The reference evaluation uses:
+
+- synthetic independent states;
+- engineering normalisations;
+- newly specified generator parameters;
+- assumed surrogate coefficients;
+- prescribed mitigation factors;
+- synthetic fault flags;
+- author-specified diagnostic labels.
+
+The main computational evaluation does not model:
+
+- aircraft dynamics;
+- physical encounter geometry;
+- realistic temporal network behaviour;
+- additional measurement uncertainty;
+- detailed detect-and-avoid performance;
+- pilot adaptation;
+- mission completion;
+- progressive cyberattack;
+- common-cause failures.
+
+The outcome surrogate and policy also share monitored inputs.
+
+Consequently, the nominal paired result is **not an independently identified treatment effect**.
+
+---
+
+# Responsible Use
+
+ASSURE-BVLOS is a research and reproducibility implementation.
+
+It must not be treated as a certified or operational flight-safety system.
+
+The current evidence does not establish:
+
+- real-world accident probability;
+- causal safety effectiveness;
+- verified contingency feasibility;
+- verified termination effectiveness;
+- acceptable pilot workload;
+- safe closed-loop aircraft behaviour;
+- regulatory compliance;
+- certification credit.
+
+> **Do not use this research implementation as the sole basis for real-world flight-safety, termination, certification or deployment decisions.**
+
+---
+
+# Citation
+
+For work using the replacement computational implementation, record the exact Git commit and implementation identifier used.
 
 Suggested citation:
 
-> Barua, N. (2026). *ASSURE-BVLOS: New Reference Computational Evaluation*. Reference implementation 2.0.0-revision. GitHub. https://github.com/Nick-Barua/ASSURE-BVLOS
+> **Barua, N. (2026). ASSURE-BVLOS: New Reference Computational Evaluation. Reference implementation 2.0.0-revision. GitHub.**
 
-The earlier documentation snapshot is identified in the manuscript as:
+Repository:
 
-[Version 1.0.0 — DOI: 10.5281/zenodo.21642250](https://doi.org/10.5281/zenodo.21642250)
-
-**That earlier DOI must not be cited as containing the replacement executable evaluation.**
-
-The supplied revision package has no newly assigned DOI. This README does not assert a new archival deposit or journal acceptance. Any later version-specific archival record should preserve the distinction between the earlier documentation and the replacement evaluation.
+```text
+https://github.com/Nick-Barua/ASSURE-BVLOS
+```
 
 ---
 
-## AI assistance and author responsibility
+## Earlier Zenodo Record
 
-Generative AI assistance was used for drafting, mathematical exposition, reference-code generation, test construction and presentation.
+The earlier Version 1.0.0 supporting-materials snapshot is archived at:
 
-The package records the computational checks actually executed. AI output is not treated as an independent source of scientific evidence, and the checks do not replace independent scientific review. Responsibility for the scientific content and final submission remains with the author.
+**DOI:** [10.5281/zenodo.21642250](https://doi.org/10.5281/zenodo.21642250)
+
+That Version 1.0.0 record contains earlier documentation and figures.
+
+It does **not** contain the executable implementation underlying the revised reference evaluation.
+
+Do not cite the earlier DOI as though it contains the replacement `2.0.0-revision` computation.
+
+A later archival version should preserve the provenance distinction between:
+
+1. the earlier Version 1.0.0 documentation snapshot; and
+2. the replacement executable reference evaluation.
 
 ---
 
-## Licence
+# Reproducibility Reporting
 
-The repository and reference implementation retain the **BSD 3-Clause License**.
+When reporting a reproducibility problem, include:
 
-See [LICENSE](LICENSE) and the licence included in `ESM_1.zip` for the applicable terms and warranty disclaimer.
+- repository commit;
+- implementation version;
+- operating system;
+- Python version;
+- NumPy version;
+- SciPy version;
+- pandas version;
+- command executed;
+- configuration changes;
+- complete error output.
+
+Do not include:
+
+- confidential operational information;
+- authentication credentials;
+- personal information;
+- proprietary mission data.
 
 ---
 
-## Contact and reproducibility reports
+# AI-Assisted Development Disclosure
 
-**Nick Barua**  
-**ORCID:** [0000-0003-4641-0112](https://orcid.org/0000-0003-4641-0112)  
-**Email:** [s.nick.barua@gmail.com](mailto:s.nick.barua@gmail.com)
+Generative AI assistance was used during the revised study for:
 
-Report technical issues through [GitHub Issues](https://github.com/Nick-Barua/ASSURE-BVLOS/issues).
+- drafting;
+- mathematical exposition;
+- reference-code generation;
+- test construction;
+- presentation support.
 
-Include the package version or repository commit, operating system, Python and dependency versions, command executed, configuration changes and complete error output. Do not include confidential operational data or personal information.
+The supplied test outputs and replay records document computational checks that were actually executed.
+
+AI-generated material is not treated as independent scientific evidence.
+
+Responsibility for:
+
+- scientific interpretation;
+- assumptions;
+- software use;
+- results;
+- manuscript content;
+- and final submission
+
+remains with the author.
+
+---
+
+# Licence
+
+This repository and the reference implementation use the:
+
+## BSD 3-Clause License
+
+See:
+
+[LICENSE](LICENSE)
+
+and the licence included in `ESM_1.zip`.
+
+The software is supplied without warranty of operational suitability, airworthiness, safety or fitness for a particular aviation purpose.
+
+---
+
+# Contact
+
+**Nick Barua**
+
+ORCID:  
+[0000-0003-4641-0112](https://orcid.org/0000-0003-4641-0112)
+
+Email:  
+[s.nick.barua@gmail.com](mailto:s.nick.barua@gmail.com)
+
+Repository:  
+https://github.com/Nick-Barua/ASSURE-BVLOS
+
+Technical and reproducibility issues:  
+[GitHub Issues](https://github.com/Nick-Barua/ASSURE-BVLOS/issues)
+
+---
+
+<p align="center">
+  <strong>ASSURE-BVLOS</strong><br>
+  Runtime assurance for risk-adaptive space–air–ground unmanned aircraft operations
+</p>
+
+<p align="center">
+  <em>
+    Reproducible supervisory-model behaviour • explicit uncertainty handling • deterministic hard-limit precedence • traceable evidence
+  </em>
+</p>
