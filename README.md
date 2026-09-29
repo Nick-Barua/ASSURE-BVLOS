@@ -1277,19 +1277,39 @@ The current evidence does not establish:
 
 ---
 
-# Citation
+## Citation
 
 For work using the replacement computational implementation, record the exact Git commit and implementation identifier used.
 
-Suggested citation:
+For the revised computational package, please cite:
 
-> **Barua, N. (2026). ASSURE-BVLOS: New Reference Computational Evaluation. Reference implementation 2.0.0-revision. GitHub.**
+**Barua, N. (2026). ASSURE-BVLOS: Reference Implementation and Reproducibility Package for Runtime Assurance in Risk-Adaptive Space–Air–Ground Unmanned Aircraft Operations (Version 2.0.0-revision) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.22827977**
 
 Repository:
 
-```text
 https://github.com/Nick-Barua/ASSURE-BVLOS
-```
+
+## Zenodo Archives
+
+### Current revised computational package
+
+**Version 2.0.0-revision**
+
+DOI: **10.5281/zenodo.22827977**
+
+Published: **18 September 2026**
+
+This record contains the revised executable reference implementation, Supplementary Code S1, Supplementary Methods S2, the associated revised figures, and the reproducibility materials supporting the current manuscript.
+
+### Earlier Version 1.0.0
+
+DOI: **10.5281/zenodo.21642250**
+
+The earlier Version 1.0.0 record is retained for provenance. It contains the earlier documentation and figures, but it does not contain the executable implementation underlying the replacement 2.0.0-revision computational evaluation.
+
+For the revised computational evaluation reported in the current manuscript, cite Version 2.0.0-revision:
+
+**DOI: 10.5281/zenodo.22827977**
 
 ---
 
