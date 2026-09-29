@@ -114,12 +114,15 @@ The complete computational configuration is supplied inside [Supplementary Code 
 
 The identifier:
 
-```text
-2.0.0-revision
-```
+`2.0.0-revision`
 
-identifies the supplied reference implementation. It does not itself indicate publication acceptance, certification, a new Zenodo DOI or a formal GitHub software release.
+identifies the supplied reference implementation.
 
+The corresponding revised reproducibility package is publicly archived on Zenodo as Version 2.0.0-revision:
+
+**DOI: 10.5281/zenodo.22827977**
+
+This version identifier does not imply journal acceptance, aviation certification, software qualification, operational validation, or a formal GitHub software release.
 ---
 
 ## Supplementary Materials
