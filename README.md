@@ -1292,47 +1292,17 @@ https://github.com/Nick-Barua/ASSURE-BVLOS
 ## Zenodo Archives
 
 ### Current revised computational package
-
-**Version 2.0.0-revision**
-
-DOI: **10.5281/zenodo.22827977**
-
-Published: **18 September 2026**
-
-This record contains the revised executable reference implementation, Supplementary Code S1, Supplementary Methods S2, the associated revised figures, and the reproducibility materials supporting the current manuscript.
-
+...
 ### Earlier Version 1.0.0
-
-DOI: **10.5281/zenodo.21642250**
-
-The earlier Version 1.0.0 record is retained for provenance. It contains the earlier documentation and figures, but it does not contain the executable implementation underlying the replacement 2.0.0-revision computational evaluation.
-
+...
 For the revised computational evaluation reported in the current manuscript, cite Version 2.0.0-revision:
 
 **DOI: 10.5281/zenodo.22827977**
 
 ---
 
-## Earlier Zenodo Record
+## Reproducibility Reporting
 
-The earlier Version 1.0.0 supporting-materials snapshot is archived at:
-
-**DOI:** [10.5281/zenodo.21642250](https://doi.org/10.5281/zenodo.21642250)
-
-That Version 1.0.0 record contains earlier documentation and figures.
-
-It does **not** contain the executable implementation underlying the revised reference evaluation.
-
-Do not cite the earlier DOI as though it contains the replacement `2.0.0-revision` computation.
-
-A later archival version should preserve the provenance distinction between:
-
-1. the earlier Version 1.0.0 documentation snapshot; and
-2. the replacement executable reference evaluation.
-
----
-
-# Reproducibility Reporting
 
 When reporting a reproducibility problem, include:
 
