@@ -23,6 +23,8 @@ ASSURE-BVLOS is a research framework for supervisory runtime assurance in beyond
 **Reference implementation:** `2.0.0-revision`  
 **Associated manuscript:** *ASSURE-BVLOS: Runtime Assurance for Risk-Adaptive Space–Air–Ground Unmanned Aircraft Operations*  
 **Journal submission:** *Aerospace Systems*
+**Publication status:** Published online (Online First), 26 October 2026
+**Article DOI:** https://doi.org/10.1007/s42401-026-00565-z
 
 [Download Code, Data and Figures](ESM_1.zip) ·
 [Supplementary Methods](ESM_2.pdf) ·
@@ -122,7 +124,9 @@ The corresponding revised reproducibility package is publicly archived on Zenodo
 
 **DOI: 10.5281/zenodo.22827977**
 
-This version identifier does not imply journal acceptance, aviation certification, software qualification, operational validation, or a formal GitHub software release.
+The journal article and the reproducibility package are separate records. The Springer DOI identifies the published research article, while the Zenodo DOI identifies the code, data and supplementary reproducibility package.
+
+This version identifier does not imply aviation certification, software qualification, operational validation, or a formal GitHub software release.
 ---
 
 ## Supplementary Materials
