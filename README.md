@@ -2,16 +2,18 @@
 
 <p align="center">
 
-![Status](https://img.shields.io/badge/status-revised%20reference%20implementation-0A66C2)
-![Version](https://img.shields.io/badge/version-2.0.0--revision-1F6FEB)
+[![Status](https://img.shields.io/badge/status-published%20online-2EA44F)](https://doi.org/10.1007/s42401-026-00565-z)
+[![Version](https://img.shields.io/badge/version-2.0.0--revision-1F6FEB)](https://doi.org/10.5281/zenodo.22827977)
 ![Python](https://img.shields.io/badge/python-3.13.5-3776AB?logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/license-BSD--3--Clause-2EA44F)
 ![Evaluation](https://img.shields.io/badge/evaluation-100%2C000%20synthetic%20states-F59E0B)
 ![Tests](https://img.shields.io/badge/tests-28%20passed-2EA44F)
 ![Output Checks](https://img.shields.io/badge/output%20checks-65%20passed-2EA44F)
 ![Reproducibility](https://img.shields.io/badge/reproducibility-code%20%2B%20data%20%2B%20tests-00A67E)
-![Journal](https://img.shields.io/badge/journal-Aerospace%20Systems-6F42C1)
-![Zenodo](https://img.shields.io/badge/Zenodo-v1.0.0-1682D4?logo=zenodo&logoColor=white)
+[![Journal](https://img.shields.io/badge/journal-Aerospace%20Systems-6F42C1)](https://doi.org/10.1007/s42401-026-00565-z)
+[![Publication](https://img.shields.io/badge/publication-Online%20First%2C%202026--10--26-2EA44F)](https://doi.org/10.1007/s42401-026-00565-z)
+[![Article DOI](https://img.shields.io/badge/article%20DOI-10.1007%2Fs42401--026--00565--z-6F42C1)](https://doi.org/10.1007/s42401-026-00565-z)
+[![Zenodo](https://img.shields.io/badge/Zenodo-v2.0.0--revision-1682D4?logo=zenodo&logoColor=white)](https://doi.org/10.5281/zenodo.22827977)
 
 </p>
 
